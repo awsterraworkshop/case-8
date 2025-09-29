@@ -2,8 +2,8 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 21.0"
 
-  name               = "demo-eks-cluster"
-  kubernetes_version = "1.33"
+  name               = "newone"
+  kubernetes_version = "1.32"
 
   # Optional
     endpoint_public_access = true 
@@ -19,14 +19,14 @@ module "eks" {
   eks_managed_node_groups = {
     demo-eks-nodes = {
 
-        ami_id = "ami-08982f1c5bf93d976"
+    ami_type = "AL2_x86_64"
       desired_capacity = 2
       max_capacity     = 3
       min_capacity     = 1
 
       instance_types = ["t3.medium"]
 
-      disk_size = 20
+      disk_size = 100
 
       key_name = "awsdev" # Replace with your actual key pair name
 
@@ -47,9 +47,6 @@ module "eks" {
       most_recent = true
     }
     kube-proxy = {
-      most_recent = true
-    }
-    aws_load_balancer_controller = {
       most_recent = true
     }
     aws-ebs-csi-driver = {
