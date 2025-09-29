@@ -3,7 +3,7 @@ module "eks" {
   version = "~> 21.0"
 
   name               = "demo-eks-cluster"
-  kubernetes_version = "1.32"
+  kubernetes_version = "1.33"
 
   # Optional
     endpoint_public_access = true 
@@ -18,7 +18,8 @@ module "eks" {
 
   eks_managed_node_groups = {
     demo-eks-nodes = {
-        ami_type = "AL2_x86_64" # Amazon Linux 2
+
+        ami_id = "ami-08982f1c5bf93d976"
       desired_capacity = 2
       max_capacity     = 3
       min_capacity     = 1
