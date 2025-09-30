@@ -53,3 +53,11 @@ module "eks" {
 # data "aws_eks_cluster_auth" "this" {
 #   name = module.eks.cluster_name
 # }
+output "defvpcid" {
+  value = module.vpc.default_vpc_id
+  
+}
+output "myvpcid" {
+  value = module.vpc.vpc_id
+  
+}
